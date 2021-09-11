@@ -17,7 +17,7 @@ export default function getSeason(date) {
    if (!date) {
       return 'Unable to determine the time of year!';
    }
-   let checkDate = new Date(date).toString() === 'Invalid Date' ? 'Invalid date!' : false;
+   let checkDate = new Date(date).toString() === 'Invalid Date' ? true : false;
    if (checkDate) {
       throw new Error("Invalid date!");
    }
