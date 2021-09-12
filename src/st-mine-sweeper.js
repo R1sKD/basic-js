@@ -34,7 +34,7 @@ export default function minesweeper(matrix) {
       let mainTopIndex = mainIndex - 1 < 0 ? false : (mainIndex - 1).toString();
       let mainBottomIndex = mainIndex + 1 > matrix.length - 1 ? false : mainIndex + 1;
       let subLeftIndex = subIndex - 1 < 0 ? false : (subIndex - 1).toString();
-      let subRightIndex = subIndex + 1 > matrix[i][j].length - 1 ? false : subIndex + 1;
+      let subRightIndex = subIndex + 1 > matrix[i].length - 1 ? false : subIndex + 1;
       if (subLeftIndex && mainTopIndex) {
         if (matrix[mainTopIndex][subLeftIndex] === true) {
           bombs++;
