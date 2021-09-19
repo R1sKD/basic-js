@@ -15,17 +15,16 @@ import {
  *
  */
 export default class DepthCalculator {
-   calculateDepth(arr) {
-      let res = 0;
-      let newRes = 1;
-      for (let i = 0; i < arr.length; i++) {
-         if (Array.isArray(arr[i])) {
-            newRes += this.calculateDepth(arr[i]);
-         }
-         if (newRes > res) {
-            res = newRes;
-         }
-      }
+   calculateDepth(arr, depth = 1) {
+      let res = depth;
+      arr.forEach(el => {
+        if (Array.isArray(el)) {
+          let tempDepth = this.calculateDepth(el, depth + 1);
+          if (tempDepth > res) {
+            res = tempDepth;
+          }
+        }
+      });
       return res;
-   }
+    }
 }
