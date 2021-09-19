@@ -17,8 +17,7 @@ export default function getSeason(date) {
    if (!date) {
       return 'Unable to determine the time of year!';
    }
-   let checkDate = new Date(date).toString() === 'Invalid Date' ? true : false;
-   if (checkDate) {
+   if (!(date instanceof Date) || Object.keys(date).length) {
       throw new Error("Invalid date!");
    }
    let winter = [11, 0, 1];
