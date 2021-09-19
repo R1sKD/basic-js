@@ -19,8 +19,9 @@ export default {
       return this;
    },
    removeLink(position) {
-      if (position < 0 || position > this.link.length || typeof position != 'number') {
-         throw new Error('You can\'t remove incorrect link!');
+      if (position <= 0 || position > this.link.length || typeof position != 'number') {
+        this.link = [];
+        throw new Error('You can\'t remove incorrect link!');
       };
       this.link.splice(--position, 1);
       return this;
@@ -31,6 +32,7 @@ export default {
    },
    finishChain() {
       let res = this.link.join('~~');
+      this.link = [];
       return res;
    }
 };
