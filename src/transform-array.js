@@ -14,6 +14,7 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default function transform(arr) {
+  console.log(arr);
    if (!Array.isArray(arr)) {
       throw new Error(`'arr' parameter must be an instance of the Array!`)
    };
@@ -37,11 +38,10 @@ export default function transform(arr) {
             if (typeof arr[i + 1] === 'number') {
                res.push(arr[i + 1]);
                res.push(arr[i + 1]);
-               i++;
             };
             break;
          case '--double-prev':
-            if (typeof arr[i - 1] === 'number') {
+            if (typeof arr[i - 1] === 'number' && arr[i - 2] != '--discard-next' && arr[i - 2] != '--double-next') {
                res.push(arr[i - 1]);
                res.push(arr[i - 1]);
             };
