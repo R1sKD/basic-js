@@ -20,10 +20,17 @@ import { NotImplementedError } from '../extensions/index.js';
  * 
  */
 export default class VigenereCipheringMachine {
-  encrypt() {
-    
+  constructor (mod) {
+    this.mod = mod;
   }
-  decrypt() {
-    
+  encrypt(string, key) {
+    if (string === undefined || key === undefined) {
+      throw new Error('Incorrect arguments!');
+    }
+  }
+  decrypt(string, key) {
+    if (string === undefined || key === undefined) {
+      throw new Error('Incorrect arguments!');
+    }
   }
 }
