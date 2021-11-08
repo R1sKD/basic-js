@@ -22,29 +22,23 @@ export default function transform(arr) {
    for (let i = 0; i < arr.length; i++) {
       switch (arr[i]) {
          case '--discard-next':
-            if (typeof arr[i + 1] === 'number') {
-               i++;
-            };
+            arr[i + 1] = undefined;
+            i++;
             break;
          case '--discard-prev':
-            if (typeof arr[i - 1] === 'number' && arr[i - 2] === '--double-next') {
-               res.pop();
-               res.pop();
-            } else if (typeof arr[i - 1] === 'number' && typeof arr[i - 2] != 'string') {
-               res.pop();
-            };
+            if (res[res.length - 1] === arr[i - 1]) {
+              res.pop();
+            }
             break;
          case '--double-next':
-            if (typeof arr[i + 1] === 'number') {
-               res.push(arr[i + 1]);
-               res.push(arr[i + 1]);
-            };
+            if (arr[i + 1] != undefined) {
+              res.push(arr[i + 1]);
+            }
             break;
          case '--double-prev':
-            if (typeof arr[i - 1] === 'number' && arr[i - 2] != '--discard-next' && arr[i - 2] != '--double-next') {
-               res.push(arr[i - 1]);
-               res.push(arr[i - 1]);
-            };
+            if (arr[i - 1] != undefined) {
+              res.push(arr[i - 1]);
+            }
             break;
          default:
             res.push(arr[i]);
